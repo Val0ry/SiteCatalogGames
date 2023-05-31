@@ -11,10 +11,10 @@ include "includes/header.php";
 		</div>
 		<ul class="nav-menu">
 			<li class="nav-item">
-				<a href="../html/login.html" class="nav-link">Account</a>
+				<a href="./login.php" class="nav-link">Account</a>
 			</li>
 			<li class="nav-item">
-				<a href="../html/destinations.html" class="nav-link">All Destinations</a>
+				<a href="./category.php" class="nav-link">All Destinations</a>
 			</li>
 			<li class="nav-item">
 				<a href="#section-5" class="nav-link">About</a>
