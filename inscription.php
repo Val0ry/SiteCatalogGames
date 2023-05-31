@@ -1,61 +1,48 @@
 <?php
-    require('connect.php');
-    session_start();
+    // connection
+    require "./connect.php"; 
 
+    // Vérification sur le formulaire est envoyé
     if (!empty($_POST)){
 
-        if (isset($_POST['username'], $_POST['pass']) && !empty($_POST['username']) && !empty($_POST['pass'])){
+        // Vérification si les champs du formulaire sont présents
+        if (isset($_POST['username'], $_POST['email'], $_POST['pass']) && !empty($_POST["username"]) && !empty($_POST["email"]) && !empty($_POST["pass"])){
 
-            $sql = "SELECT * FROM `users` WHERE `username` = :username";
+            // récupérer le nom d'utilisateur en le protégeant
+            $username = strip_tags($_POST['username']);
+            
+            // Vérification de la bonne écriture de l'email + récupérer l'email en le protégeant
+            if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+                die("L'adresse email est incorrecte");
+            }
+
+            // hashage du mot de pass
+            $pass = password_hash($_POST["pass"], PASSWORD_ARGON2I);
+
+            // Enregistrement des valeurs dans la base de données
+            $sql = "INSERT INTO `users`(`username`, `email`, `pass`, `roles`) VALUES (:username, :email, '$pass', '[\"user\"]')";
             
             $query = $db->prepare($sql);
 
-            $query->bindValue(":username", $_POST["username"], PDO::PARAM_STR);
+            $query->bindValue(":username", $username, PDO::PARAM_STR);
+            $query->bindValue(":email", $_POST["email"], PDO::PARAM_STR);
 
             $query->execute();
-
-            $user = $query->fetch();
             
-            if(!$user){
-                die("Le nom d'utilisateur ou le mot de passe est incorrect");
-            }
+            // Connection de l'utilisateur
 
-            // Vérification du mdp
-            if(!password_verify($_POST["pass"], $user["pass"])){
-                die("Le nom d'utilisateur ou le mot de passe est incorrect");
-            }
-
-            
-            
-            $_SESSION["user"] = [
-                "id" => $user["id"],
-                "username" => $user["username"],
-                "email" => $user["email"],
-                "roles" => $user["roles"]
-            ];
-
-            $_SESSION['username'] = $username;
         
-            if (mysqli_num_rows($result) == 1) {
-                $user = mysqli_fetch_assoc($result);
-                // vérifier si l'utilisateur est un administrateur ou un utilisateur
-                if ($user['roles'] == 'admin') {
-                header('location: admin.php');		  
-                }else{
-                header('location: users.php');
-                }
-                }else{
-                $message = "Le nom d'utilisateur ou le mot de passe est incorrect.";
-            }
-
+        // Si un des champs est manquant
         }else{
-            die("Le nom d'utilisateur ou le mot de passe est manquant");
+            die("Le formulaire est incomplet");
+            header("Refresh:0");
         }
+
     }
     include "./includes/header.php";
 ?>
 
-        <main>
+<main>
             <section class="dark:bg-gray-900 section-1-index">
                 <nav class="navbar">
                     <div class="logoz">
@@ -81,11 +68,12 @@
                         <span class="bar"></span>
                     </div>
                 </nav>
+
                 <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
                     <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                         <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                             <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                                Sign in to your account
+                                Sign up
                             </h1>
                             <form class="space-y-4 md:space-y-6" method="POST">
                                 <div>
@@ -93,23 +81,17 @@
                                     <input type="text" name="username" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="username" required="">
                                 </div>
                                 <div>
+                                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Email</label>
+                                    <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="email" required="">
+                                </div>
+                                <div>
                                     <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
                                     <input type="password" name="pass" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
                                 </div>
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-start">
-                                        <div class="flex items-center h-5">
-                                            <input id="remember" aria-describedby="remember" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800" required="">
-                                        </div>
-                                        <div class="ml-3 text-sm">
-                                            <label for="remember" class="text-gray-500 dark:text-gray-300">Remember me</label>
-                                        </div>
-                                    </div>
-                                    <a href="#" class="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Forgot password?</a>
-                                </div>
-                                <button type="submit" class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign in</button>
+                                
+                                <button type="submit" class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign Up</button>
                                 <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-                                    Don’t have an account yet? <a href="./inscription.php" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign up</a>
+                                    <a href="./login.php" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign In</a>
                                 </p>
                             </form>
                         </div>
