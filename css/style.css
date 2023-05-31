@@ -1,0 +1,23 @@
+* {
+	margin: 0;
+	padding: 0;
+	color: #fff;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	background: no-repeat url('../img/body-bg.png');
+}
+
+/* Section 1 */
+
+.section-1-index {
+	background: no-repeat url("../img/hero-bg1.png");
+	height: 110vh;
+}
+
+.zlogo {
+
+}
