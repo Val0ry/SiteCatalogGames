@@ -11,10 +11,10 @@ include "includes/header.php";
 		</div>
 		<ul class="nav-menu">
 			<li class="nav-item">
-				<a href="./login.php" class="nav-link">Account</a>
+				<a href="login.php" class="nav-link">Account</a>
 			</li>
 			<li class="nav-item">
-				<a href="./category.php" class="nav-link">All Destinations</a>
+				<a href="../html/destinations.html" class="nav-link">All Destinations</a>
 			</li>
 			<li class="nav-item">
 				<a href="#section-5" class="nav-link">About</a>
@@ -32,6 +32,7 @@ include "includes/header.php";
 	<div class="heroimg">
 		<img src="./img/hero-position-img.png">
 	</div>
+	<h1></h1>
 </section>
 
 <section>
