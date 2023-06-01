@@ -9,6 +9,7 @@
 	<title>Zen</title>
 </head>
 <body>
+<div><a href="./logout.php">Déconnexion</a></div>
 	<!-- <header>
 		<nav class="navbar">
 			<div class="logoz">

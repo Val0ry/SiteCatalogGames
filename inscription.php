@@ -2,6 +2,9 @@
     // connection
     require "./connect.php"; 
 
+    // Connection de l'utilisateur
+    session_start();
+
     // Vérification sur le formulaire est envoyé
     if (!empty($_POST)){
 
@@ -20,7 +23,7 @@
             $pass = password_hash($_POST["pass"], PASSWORD_ARGON2I);
 
             // Enregistrement des valeurs dans la base de données
-            $sql = "INSERT INTO `users`(`username`, `email`, `pass`, `roles`) VALUES (:username, :email, '$pass', '[\"user\"]')";
+            $sql = "INSERT INTO `users`(`username`, `email`, `pass`, `roles`) VALUES (:username, :email, '$pass', 'user')";
             
             $query = $db->prepare($sql);
 
@@ -28,9 +31,22 @@
             $query->bindValue(":email", $_POST["email"], PDO::PARAM_STR);
 
             $query->execute();
-            
-            // Connection de l'utilisateur
 
+
+            // Récupération de l'id de l'utilisateur
+            $id = $db->lastInsertId();
+            
+            
+
+            // Stockage dans $-SESSION les infos de l'utilisateur
+            $_SESSION["user"] = [
+                "id" => $id,
+                "username" => $username,
+                "email" => $_POST["email"],
+                "roles" => ["user"]
+            ];
+
+            header('location: users.php');
         
         // Si un des champs est manquant
         }else{

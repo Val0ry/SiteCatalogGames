@@ -2,6 +2,11 @@
 require_once('connect.php');
 session_start();
 
+$sql = "SELECT * FROM category";
+$query = $db->prepare($sql);
+$query->execute();
+$result = $query->fetchAll(PDO::FETCH_ASSOC);
+
 include "includes/header.php";
 ?>
 <section class="section-1-index">
@@ -33,6 +38,18 @@ include "includes/header.php";
 		<img src="./img/hero-position-img.png">
 	</div>
 	<h1></h1>
+	<?php
+//pour chaque résultat de la variable résult, on affiche le  stagiaire dans le tableau
+    foreach($result as $image){
+                                
+    ?> 
+	<div>
+	<?= $image['icone'] ?>
+	</div>
+
+	<?php
+    }
+    ?>
 </section>
 
 <section>

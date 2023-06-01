@@ -31,22 +31,23 @@
                 "id" => $user["id"],
                 "username" => $user["username"],
                 "email" => $user["email"],
-                "roles" => $user["roles"]
+                "roles" => $user["roles"],
+                "avatar" => $user["avatar"]
             ];
 
-            $_SESSION['username'] = $username;
-        
-            if (mysqli_num_rows($result) == 1) {
-                $user = mysqli_fetch_assoc($result);
-                // vérifier si l'utilisateur est un administrateur ou un utilisateur
-                if ($user['roles'] == 'admin') {
-                header('location: admin.php');		  
+            
+
+            if ($user['roles'] == 'admin') {
+                    header("location: admin.php");
+                    exit;	
+
+                }else if($user['roles'] == 'user'){
+                    header('location: users.php');
+                    exit;
+
                 }else{
-                header('location: users.php');
-                }
-                }else{
-                $message = "Le nom d'utilisateur ou le mot de passe est incorrect.";
-            }
+                    $message = "Le nom d'utilisateur ou le mot de passe est incorrect.";
+                }   
 
         }else{
             die("Le nom d'utilisateur ou le mot de passe est manquant");
