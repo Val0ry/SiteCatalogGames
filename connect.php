@@ -1,18 +1,25 @@
 <?php
-try{
-    $options = 
-    [
-        PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-    ];
+    // Informations d'identification
+    define('DB_HOST', 'localhost');
+    define('DB_USER', 'root');
+    define('DB_PASS', '');
+    define('DB_NAME', 'catalog');
+    
+    // dsn de connexion
+    $dsn = "mysql:dbname=".DB_NAME.";host=".DB_HOST;
 
-    $server_name = 'localhost';
-    $db_name = 'catalog';
-    $user_name = 'root';
-    $password = '';
+    // Connexion à la base de données
+    try{
+        // Instancier PDO
+        $db = new PDO($dsn, DB_USER, DB_PASS);
 
-    $db = new PDO("mysql:host=$server_name;dbname=$db_name;charset=utf8mb4", $user_name, $password, $options);
-    // echo "connexion réussie 👍";
-} catch(PDOException $e){
-    echo "echec de connexion : ". $e->getMessage(); 
-};
+        // Envoyer les données en UTF8
+        $db->exec("SET NAMES utf8");
+
+        // Définir le mode "fetch" par défaut
+        $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+
+    }catch(PDOException $e){
+        die("Erreur :".$e->getMessage()); 
+    }
+?>
