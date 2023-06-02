@@ -8,4 +8,4 @@
 	<link rel="stylesheet" href="css/style.css">
 	<title>Zen</title>
 </head>
-<body>
+<body cz-shortcut-listen="true">
