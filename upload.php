@@ -37,6 +37,11 @@
             die("Upload Failed");
         }
 
+        //upload image to db
+            require_once('connect.php');
+            $sql = $db->prepare('INSERT INTO users (avatar) VALUES (?)');
+            $sql->execute([$newfilename]); 
+
         // on interdit l'exectuion du fichier
         chmod($newfilename, 0644);
         

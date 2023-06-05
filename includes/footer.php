@@ -1,3 +1,5 @@
+<div class="text-center"><a href="../logout.php">Disconnect</a></div>
+
 
 <footer class="bgfooter">
 	<div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">

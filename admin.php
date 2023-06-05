@@ -13,6 +13,33 @@
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
+    if($_POST){
+        // die(var_dump($_POST));
+        if (isset($_POST['id']) && isset($_POST['username']) && isset($_POST['email'])){
+             
+            $id = strip_tags($_POST['id']);
+            $username = strip_tags($_POST['username']);
+            $email = strip_tags($_POST['email']);
+            $sql = "UPDATE users SET username=:username, email=:email WHERE id = :id";
+            $query = $db->prepare($sql);
+            $query->bindValue(':id', $id, PDO::PARAM_INT);
+            $query->bindValue(':username', $username, PDO::PARAM_STR);
+            $query->bindValue(':email', $email, PDO::PARAM_STR);
+            $query->execute();
+            // require_once('./close.php');
+            // header('Location: ./admin.php');
+        
+        }else{
+            // die(var_dump($_POST['id']));
+        }
+    }    
+
+
+    
+
+
+    
+
     
 
 
@@ -60,7 +87,7 @@
 								<a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</a>
 							</li>
 							<li>
-								<a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+								<a href="./logout.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
 							</li>
 						</ul>
 					</div>
@@ -115,16 +142,16 @@
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <input type="hidden" name="id" value="<?= $lineTable['id'] ?>">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <input class="bg-transparent placeholder-white dark:bg-gray-800" type="text" placeholder="<?= $lineTable['username'] ?>">
+                            <input class="bg-transparent dark:bg-gray-800" type="text" value="<?= $lineTable['username'] ?>">
                             </th>
                             <td class="px-6 py-4">
-                            <input class="bg-transparent placeholder-white dark:bg-gray-800" type="email" placeholder="<?= $lineTable['email'] ?>">
+                            <input class="bg-transparent dark:bg-gray-800" type="email" value="<?= $lineTable['email'] ?>">
                             </td>
                             <td class="px-6 py-4">
                             <?= $lineTable['roles'] ?>
                             </td>
                             <td class="px-6 py-4">
-                            <input class="bg-transparent placeholder-white" type="text" placeholder="<?= $lineTable['avatar'] ?>">
+                            <input class="bg-transparent" type="text" value="<?= $lineTable['avatar'] ?>">
                             </td>
                             <td class="px-6 py-4 text-right">
                                 <?php
