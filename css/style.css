@@ -8,7 +8,8 @@ body {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	background: no-repeat url('../img/body-bg.png');
+	background-image: url('../img/body-bg.png');
+	background-size: cover;
 }
 
 /* Menu hamburger */
@@ -65,17 +66,83 @@ body {
 /* Section 1 */
 
 .section-1-index {
-	background: no-repeat url("../img/hero-bg1.png");
-	height: 110vh;
+	background-image: url("../img/hero-bg1.png");
+	background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 940px;
+}
+
+.dark\:bgcolor {
+     --tw-bg-opacity: 1;
+    background: rgba(0 0 0.5) linear-gradient(109.6deg, rgba(119, 44, 232, 0.68) 11.5%, rgba(119,44,232,1.000) 91.2%);
+    background-color: transparent;
+}
+
+
+.headtitle {
+	padding-top: 10rem;
+	padding-left: 12rem ;
+    display: flex;
+    position: relative;
+    z-index: 9;
+    width: 80rem;
+    text-align: left;
+}
+
+.title {
+    font-size: 4rem;
+    line-height: 4rem;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.default {
+	padding-top: 2rem;
+	padding-left: 12rem; 
 }
 
 .heroimg {
-	display: flex;
-	justify-content: flex-end;
-	padding: 1.5rem 2rem;
+    position: relative;
+    bottom: 34rem;
+    left: 29rem;
+    width: 50%;
+    margin: auto;
+}
+
+.heroimg img {
+	width: 926px;
+	height: 772px;
 }
 
 .logoz {
 	display: flex;
 	width: 7vw;
+}
+
+.discover {
+	padding-top: 2rem;
+	padding-left: 6rem;
+	zoom: 2;
+}
+
+/* Section 2 */
+
+.slider {
+    width: 50rem;
+    height: auto;
+    margin: auto;
+}
+
+
+/* Admin page */ 
+input{
+    width: 100%;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 8em 0;
 }
