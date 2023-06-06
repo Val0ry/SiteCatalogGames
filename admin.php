@@ -48,6 +48,7 @@
     include "./includes/header.php";
 ?>
     <nav class="navbar">
+    
             <div class="logoz">
                 <img src="img/logo.png" alt="Logo Z">
             </div>
@@ -66,10 +67,13 @@
 			</li>
 			<li class="nav-item">
 				<div class="flex items-center md:order-2">
-					<button type="button" class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+                
+					<button type="button" class="flex mr-3 text-base bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
 						<span class="sr-only">Open user menu</span>
-						<img class="w-8 h-8 rounded-full" src="img/gaming-world1.png" alt="user photo">
+						<?php echo '<img src="'.$_SESSION["user"]["avatar"].'" id="avatar" alt="avatar" title="avatar" class="rounded-xl"/></img>'; ?>
 					</button>
+                    
+
 					<!-- Dropdown menu -->
 					<div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bgcolor dark:divide-gray-600" id="user-dropdown">
 						<div class="px-4 py-3">
@@ -106,6 +110,7 @@
 				<span class="bar"></span>
 				<span class="bar"></span>
 			</div>
+            
 	</nav>
 
         
@@ -151,7 +156,7 @@
                             <?= $lineTable['roles'] ?>
                             </td>
                             <td class="px-6 py-4">
-                            <input class="bg-transparent" type="text" value="<?= $lineTable['avatar'] ?>">
+                            <?php echo '<img id="avatar" src="' .$lineTable['avatar']. '" alt="avatar" title="avatar"/></img>'; ?>
                             </td>
                             <td class="px-6 py-4 text-right">
                                 <?php
@@ -168,7 +173,13 @@
                 </table>
             </div>
         </form>
-
+        
+        <div class="text-center w-48 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+            <a href="./upload.php" class="">Upload</a><br>
+        </div>
+        <div class="text-center w-48 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+            <a href="../logout.php">Disconnect</a>
+        </div>
 
 
 

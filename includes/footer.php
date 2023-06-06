@@ -1,4 +1,4 @@
-<div class="text-center"><a href="../logout.php">Disconnect</a></div>
+
 
 
 <footer class="bgfooter">

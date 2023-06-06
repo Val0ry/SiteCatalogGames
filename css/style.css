@@ -146,3 +146,8 @@ form{
     justify-content: space-evenly;
     padding: 8em 0;
 }
+
+#avatar{
+    height: 2em;
+    width: 2em;
+}
