@@ -46,7 +46,7 @@
     //         // die(var_dump($_POST['id']));
     //     }
     // }    
-      var_dump($_SESSION["user"]["avatar"]);
+      var_dump($_SESSION["user"]["roles"]);
     include "./includes/header.php";
 ?>
 <section>
@@ -185,10 +185,10 @@
                             </td>
 
                             
-                            <td class="px-6 py-4 text-right" id="avatar">
+                            <td class="px-6 py-4 text-right">
                                 <?php
-                                if($creator != 'SuperAdmin'){
-                                    include "./includes/if_admin.php";}
+                                if($lineTable['creator'] != 'SuperAdmin'){
+                                    include "./includes/if_user.php";}
                                 ?>
                             </td>
                         </tr>
