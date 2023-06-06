@@ -138,6 +138,7 @@ body {
 /* Admin page */ 
 input{
     width: 100%;
+    height: auto;
 }
 
 form{
@@ -145,9 +146,10 @@ form{
     flex-direction: column;
     justify-content: space-evenly;
     padding: 8em 0;
+    gap: 3em;
 }
 
 #avatar{
-    height: 2em;
-    width: 2em;
+    height: 3em;
+    width: 3em;
 }

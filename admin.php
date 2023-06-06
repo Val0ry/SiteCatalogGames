@@ -35,16 +35,6 @@
     }    
 
 
-    
-
-
-    
-
-    
-
-
-
-
     include "./includes/header.php";
 ?>
     <nav class="navbar">
@@ -53,19 +43,19 @@
                 <img src="img/logo.png" alt="Logo Z">
             </div>
 		    <ul class="nav-menu">
-			<li class="nav-item">
-				<a href="index.php" class="nav-link">Home</a>
-			</li>
-			<li class="nav-item">
-				<a href="../html/destinations.html" class="nav-link">All Destinations</a>
-			</li>
-			<li class="nav-item">
-				<a href="#section-5" class="nav-link">About</a>
-			</li>
-			<li class="nav-item">
-				<a href="../html/index.html#section-7" class="nav-link">Contact</a>
-			</li>
-			<li class="nav-item">
+                <li class="nav-item">
+                    <a href="index.php" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../html/destinations.html" class="nav-link">All Destinations</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#section-5" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../html/index.html#section-7" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
 				<div class="flex items-center md:order-2">
                 
 					<button type="button" class="flex mr-3 text-base bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
@@ -146,9 +136,9 @@
                     ?>  
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <input type="hidden" name="id" value="<?= $lineTable['id'] ?>">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             <input class="bg-transparent dark:bg-gray-800" type="text" value="<?= $lineTable['username'] ?>">
-                            </th>
+                            </td>
                             <td class="px-6 py-4">
                             <input class="bg-transparent dark:bg-gray-800" type="email" value="<?= $lineTable['email'] ?>">
                             </td>
@@ -158,7 +148,7 @@
                             <td class="px-6 py-4">
                             <?php echo '<img id="avatar" src="' .$lineTable['avatar']. '" alt="avatar" title="avatar"/></img>'; ?>
                             </td>
-                            <td class="px-6 py-4 text-right">
+                            <td class="px-6 py-4 text-right" id="avatar">
                                 <?php
                                 if($lineTable['roles'] != 'admin'){
                                     include "./includes/if_admin.php";}
@@ -172,20 +162,13 @@
                     </tbody>
                 </table>
             </div>
+        <div class="text-center w-32 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+            <a href="./upload.php" class="">Upload</a>
+        </div>
         </form>
         
-        <div class="text-center w-48 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-            <a href="./upload.php" class="">Upload</a><br>
-        </div>
-        <div class="text-center w-48 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-            <a href="../logout.php">Disconnect</a>
-        </div>
-
-
-
-
-
-
+        <a href="./users.php">Product's List</a>
+   
 <?php
     include "./includes/footer.php";
 ?>
