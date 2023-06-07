@@ -1,4 +1,6 @@
 
+
+
 <footer class="bgfooter">
 	<div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
 		<div class="md:flex md:justify-between">

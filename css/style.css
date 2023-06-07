@@ -133,3 +133,23 @@ body {
     height: auto;
     margin: auto;
 }
+
+
+/* Admin page */ 
+input{
+    width: 100%;
+    height: auto;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 8em 0;
+    gap: 3em;
+}
+
+#avatar{
+    height: 3em;
+    width: 3em;
+}

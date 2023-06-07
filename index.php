@@ -20,7 +20,7 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
 				<a href="login.php" class="nav-link">Account</a>
 			</li>
 			<li class="nav-item">
-				<a href="../html/destinations.html" class="nav-link">Category</a>
+				<a href="../html/destinations.html" class="nav-link">All Destinations</a>
 			</li>
 			<li class="nav-item">
 				<a href="#section-5" class="nav-link">About</a>
@@ -32,7 +32,7 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
 				<div class="flex items-center md:order-2">
 					<button type="button" class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
 						<span class="sr-only">Open user menu</span>
-						<img class="w-8 h-8 rounded-full" src="" alt="user photo">
+						<img class="w-8 h-8 rounded-full" src="./img/avatar_générique.png" alt="user photo">
 					</button>
 					<!-- Dropdown menu -->
 					<div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bgcolor dark:divide-gray-600" id="user-dropdown">
@@ -87,7 +87,7 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
 		<div class="grid grid-flow-col pt-20 pb-20 gap-x-7 justify-center card">
 			<figure class="relative h-3/4 max-w-xl transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0">
 				<a href="#">
-					<?php echo'<img class="rounded-lg" src="uploads/0115374c6b4e0da289ab1f5a43282eb6.jpg" alt="image description">'; ?>
+					<img class="rounded-lg" src="img/fps.png" alt="image description">
 				</a>
 				<figcaption class="relative px-4 text-lg text-white text-center bottom-10">
 					<p>FPS</p>
@@ -95,7 +95,7 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
 			</figure>
 			<figure class="relative h-3/4 max-w-xl transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0">
 				<a href="#">
-					<?php echo' <img class="rounded-lg" src="uploads/9896894722863687fe4cb08d22bbf7bf.jpg" alt="image description">'; ?>
+					<img class="rounded-lg" src="img/fps.png" alt="image description">
 				</a>
 				<figcaption class="relative px-4 text-lg text-white text-center bottom-10">
 					<p>MMORPG</p>
@@ -103,7 +103,7 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
 			</figure>
 			<figure class="relative h-3/4 max-w-xl transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0">
 				<a href="#">
-					<?php echo' <img class="rounded-lg" src="uploads/2f0d8506b656d2288ee3ae868e0fec7b.jpg" alt="image description">'; ?>
+					<img class="rounded-lg" src="img/fps.png" alt="image description">
 				</a>
 				<figcaption class="relative px-4 text-lg text-white text-center bottom-10">
 					<p>Strategy</p>
