@@ -8,42 +8,62 @@
         exit(); 
     }
 
-    $sql = "SELECT * FROM intervention ORDER BY dating ASC";
+    $sql = "SELECT * FROM users";
     $query = $db->prepare($sql);
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
-    require_once('./close.php');
-
-
-
+    if($_POST){
+        // die(var_dump($_POST));
+        if (isset($_POST['id']) && isset($_POST['username']) && isset($_POST['email'])){
+             
+            $id = strip_tags($_POST['id']);
+            $username = strip_tags($_POST['username']);
+            $email = strip_tags($_POST['email']);
+            $sql = "UPDATE users SET username=:username, email=:email WHERE id = :id";
+            $query = $db->prepare($sql);
+            $query->bindValue(':id', $id, PDO::PARAM_INT);
+            $query->bindValue(':username', $username, PDO::PARAM_STR);
+            $query->bindValue(':email', $email, PDO::PARAM_STR);
+            $query->execute();
+            // require_once('./close.php');
+            // header('Location: ./admin.php');
+        
+        }else{
+            // die(var_dump($_POST['id']));
+        }
+    }    
 
 
     include "./includes/header.php";
 ?>
     <nav class="navbar">
+    
             <div class="logoz">
                 <img src="img/logo.png" alt="Logo Z">
             </div>
 		    <ul class="nav-menu">
-			<li class="nav-item">
-				<a href="index.php" class="nav-link">Home</a>
-			</li>
-			<li class="nav-item">
-				<a href="../html/destinations.html" class="nav-link">All Destinations</a>
-			</li>
-			<li class="nav-item">
-				<a href="#section-5" class="nav-link">About</a>
-			</li>
-			<li class="nav-item">
-				<a href="../html/index.html#section-7" class="nav-link">Contact</a>
-			</li>
-			<li class="nav-item">
+                <li class="nav-item">
+                    <a href="index.php" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../html/destinations.html" class="nav-link">All Destinations</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#section-5" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../html/index.html#section-7" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
 				<div class="flex items-center md:order-2">
-					<button type="button" class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+                
+					<button type="button" class="flex mr-3 text-base bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
 						<span class="sr-only">Open user menu</span>
-						<img class="w-8 h-8 rounded-full" src="img/gaming-world1.png" alt="user photo">
+						<?php echo '<img src="'.$_SESSION["user"]["avatar"].'" id="avatar" alt="avatar" title="avatar" class="rounded-xl"/></img>'; ?>
 					</button>
+                    
+
 					<!-- Dropdown menu -->
 					<div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bgcolor dark:divide-gray-600" id="user-dropdown">
 						<div class="px-4 py-3">
@@ -61,7 +81,7 @@
 								<a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</a>
 							</li>
 							<li>
-								<a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+								<a href="./logout.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
 							</li>
 						</ul>
 					</div>
@@ -80,113 +100,75 @@
 				<span class="bar"></span>
 				<span class="bar"></span>
 			</div>
+            
 	</nav>
 
-        <h1 class="text-5xl py-10 text-center font-extrabold dark:text-white">Administrator</h1>
+        
+
         <form method="post">
-            
-        <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-32">
-            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                        <th scope="col" class="px-6 py-3">
-                            Username
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Email
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Role
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Avatar
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            <span class="sr-only">Edit</span>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Apple MacBook Pro 17"
-                        </th>
-                        <td class="px-6 py-4">
-                            Silver
-                        </td>
-                        <td class="px-6 py-4">
-                            Laptop
-                        </td>
-                        <td class="px-6 py-4">
-                            $2999
-                        </td>
-                        <td class="px-6 py-4 text-right">
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Microsoft Surface Pro
-                        </th>
-                        <td class="px-6 py-4">
-                            White
-                        </td>
-                        <td class="px-6 py-4">
-                            Laptop PC
-                        </td>
-                        <td class="px-6 py-4">
-                            $1999
-                        </td>
-                        <td class="px-6 py-4 text-right">
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                        </td>
-                    </tr>
-                    <tr class="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Magic Mouse 2
-                        </th>
-                        <td class="px-6 py-4">
-                            Black
-                        </td>
-                        <td class="px-6 py-4">
-                            Accessories
-                        </td>
-                        <td class="px-6 py-4">
-                            $99
-                        </td>
-                        <td class="px-6 py-4 text-right">
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-
-            <h1 class="box-title">Ajouter Utilisateur</h1>
-            <input type="text" class="box-input" name="username" placeholder="Nom d'utilisateur" required />
-          
-            <input type="text" class="box-input" name="email" placeholder="Email" required />
-          
-            <div>
-                <select class="box-input" name="type" id="type" >
-                  <option value="" disabled selected>Type</option>
-                  <option value="admin">Admin</option>
-                  <option value="user">User</option>
-                </select>
+            <h1 class="text-5xl py-10 text-center font-extrabold dark:text-white">Administrator</h1>
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-32">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">
+                                Username
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Email
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Role
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Avatar
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                <span class="sr-only">Edit</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    //pour chaque résultat de la variable résult, on affiche le  stagiaire dans le tableau
+                    foreach($result as $lineTable){
+                                    
+                    ?>  
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <input type="hidden" name="id" value="<?= $lineTable['id'] ?>">
+                            <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <input class="bg-transparent dark:bg-gray-800" type="text" value="<?= $lineTable['username'] ?>">
+                            </td>
+                            <td class="px-6 py-4">
+                            <input class="bg-transparent dark:bg-gray-800" type="email" value="<?= $lineTable['email'] ?>">
+                            </td>
+                            <td class="px-6 py-4">
+                            <?= $lineTable['roles'] ?>
+                            </td>
+                            <td class="px-6 py-4">
+                            <?php echo '<img id="avatar" src="' .$lineTable['avatar']. '" alt="avatar" title="avatar"/></img>'; ?>
+                            </td>
+                            <td class="px-6 py-4 text-right" id="avatar">
+                                <?php
+                                if($lineTable['roles'] != 'admin'){
+                                    include "./includes/if_admin.php";}
+                                ?>
+                            </td>
+                        </tr>
+                    
+                    <?php
+                    }
+                    ?>
+                    </tbody>
+                </table>
             </div>
-          
-            <input type="password" class="box-input" name="password" placeholder="Mot de passe" required />
-            <input type="submit" name="submit" value="+ Add" class="box-button" />
-
+        <div class="text-center w-32 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+            <a href="./upload.php" class="">Upload</a>
+        </div>
         </form>
-
-
-
-
-
-
-
+        
+        <a href="./users.php">Product's List</a>
+   
 <?php
     include "./includes/footer.php";
 ?>
