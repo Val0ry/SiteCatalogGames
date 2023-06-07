@@ -20,7 +20,7 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
 				<a href="login.php" class="nav-link">Account</a>
 			</li>
 			<li class="nav-item">
-				<a href="../html/destinations.html" class="nav-link">Category</a>
+				<a href="#category" class="nav-link">Category</a>
 			</li>
 			<li class="nav-item">
 				<a href="#section-5" class="nav-link">About</a>
@@ -83,7 +83,7 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
 		</div>
 	</section>
 	<section class="section-2-index">
-		<h1 class="text-center  pt-10 text-5xl">Category</h1>
+		<h1 class="text-center  pt-10 text-5xl" id="category">Category</h1>
 		<div class="grid grid-flow-col pt-20 pb-20 gap-x-7 justify-center card">
 			<figure class="relative h-3/4 max-w-xl transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0">
 				<a href="#">

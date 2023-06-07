@@ -4,7 +4,7 @@
 
     // Connection de l'utilisateur
     session_start();
-
+    unset($_SESSION["error"]);
     // Vérification sur le formulaire est envoyé
     if (!empty($_POST)){
 
@@ -22,7 +22,7 @@
                     $_SESSION["error"] = [
                         "userName" => "Username or password is wrong !"
                     ];
-                    var_dump($_SESSION["error"]["userName"]);
+                    // var_dump($_SESSION["error"]["userName"]);
                 }else{
 
                     // Vérification de la bonne écriture de l'email + récupérer l'email en le protégeant
@@ -96,17 +96,17 @@
                     </div>
                 </nav>
 
-                <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+                <div class="flex flex-col items-center justify-center px-2 py-4 mx-auto  lg:py-0">
                     <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                         <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                             <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                                 Sign up
                             </h1>
-                            <?php
+                            <h2 class="text-red-600"><?php
                             if(isset($_SESSION["error"]["userName"])){
                             echo ($_SESSION["error"]["userName"]);
                             }
-                            ?>
+                            ?></h2>
                             <form class="space-y-4 md:space-y-6" method="POST">
                                 <div>
                                     <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Username</label>
@@ -133,7 +133,7 @@
         </main>
 
         <script src="./js/tailwind.config.js"></script>
-        <script type="text/javascript" src="./js/toast.js"></script>
+        <!-- <script type="text/javascript" src="./js/toast.js"></script> -->
 <?php
 include "./includes/footer.php";
 ?>        

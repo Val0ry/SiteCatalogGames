@@ -145,7 +145,6 @@ form{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    padding: 8em 0;
     gap: 3em;
 }
 

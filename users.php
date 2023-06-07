@@ -46,7 +46,7 @@
     //         // die(var_dump($_POST['id']));
     //     }
     // }    
-      var_dump($_SESSION["user"]["roles"]);
+     
     include "./includes/header.php";
 ?>
 <section>
