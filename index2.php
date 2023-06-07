@@ -14,7 +14,7 @@ include "includes/header.php";
 				<a href="login.php" class="nav-link">Account</a>
 			</li>
 			<li class="nav-item">
-				<a href="../html/destinations.html" class="nav-link">All Destinations</a>
+				<a href="../html/destinations.html" class="nav-link">Category</a>
 			</li>
 			<li class="nav-item">
 				<a href="#section-5" class="nav-link">About</a>
