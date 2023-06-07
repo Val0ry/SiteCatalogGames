@@ -32,7 +32,7 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
 				<div class="flex items-center md:order-2">
 					<button type="button" class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
 						<span class="sr-only">Open user menu</span>
-						<img class="w-8 h-8 rounded-full" src="img/gaming-world1.png" alt="user photo">
+						<img class="w-8 h-8 rounded-full" src="./img/avatar_générique.png" alt="user photo">
 					</button>
 					<!-- Dropdown menu -->
 					<div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bgcolor dark:divide-gray-600" id="user-dropdown">
