@@ -8,34 +8,10 @@
         exit(); 
     }
 
-    if($_POST){
-        
-        if (isset($lineTable['id']) && isset($_POST['username']) && isset($_POST['email'])){
-            var_dump("Hello!");
-            $id = strip_tags($lineTable['id']);
-            $username = strip_tags($_POST['username']);
-            $email = strip_tags($_POST['email']);
-            $sql = "UPDATE users SET username=:username, email=:email WHERE id = :id";
-            $query = $db->prepare($sql);
-            $query->bindValue(':id', $id, PDO::PARAM_INT);
-            $query->bindValue(':username', $username, PDO::PARAM_STR);
-            $query->bindValue(':email', $email, PDO::PARAM_STR);
-            $query->execute();
-            var_dump($_POST['id']);
-            require_once('./close.php');
-            header('Location: ./admin.php');
-        
-        }else{
-            // die(var_dump($_POST['id']));
-        }
-    }    
-
     $sql = "SELECT * FROM users";
     $query = $db->prepare($sql);
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
-
-    
 
 
     include "./includes/header.php";
@@ -108,15 +84,12 @@
 
         
 
-        <form method="post">
+        <form method="post" action="./admin.php">
             <h1 class="text-5xl py-10 text-center font-extrabold dark:text-white">Administrator</h1>
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-32">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
-                            <th scope="col" class="px-6 py-3">
-                                ID
-                            </th>
                             <th scope="col" class="px-6 py-3">
                                 Username
                             </th>
@@ -141,12 +114,12 @@
                                     
                     ?>  
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <td><?= $lineTable['id'] ?></td>
+                            <input name="id" class="bg-transparent dark:bg-gray-800" type="hidden" value="<?= $lineTable['id'] ?>">
                             <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <input class="bg-transparent dark:bg-gray-800" type="text" value="<?= $lineTable['username'] ?>">
+                            <input id="username" name="username" class="bg-transparent dark:bg-gray-800" type="text" value="<?= $lineTable['username'] ?>">
                             </td>
                             <td class="px-6 py-4">
-                            <input class="bg-transparent dark:bg-gray-800" type="email" value="<?= $lineTable['email'] ?>">
+                            <input id="email" name="email" class="bg-transparent dark:bg-gray-800" type="email" value="<?= $lineTable['email'] ?>">
                             </td>
                             <td class="px-6 py-4">
                             <?= $lineTable['roles'] ?>
@@ -174,7 +147,7 @@
         </form>
         
         <a href="./users.php">Product's List</a>
-   
+        <script src="./js/editLink.js"></script>        
 <?php
     include "./includes/footer.php";
 ?>
