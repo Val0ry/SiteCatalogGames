@@ -13,7 +13,7 @@
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
-
+    
     include "./includes/header.php";
 ?>
     <nav class="navbar">
@@ -130,8 +130,9 @@
                             <td class="px-6 py-4 text-right" id="avatar">
                                 <?php
                                 if($lineTable['roles'] != 'admin'){
-                                    include "./includes/if_admin.php";}
+                                    include "./if_admin.php";}
                                 ?>
+                                
                             </td>
                         </tr>
                     
@@ -146,8 +147,7 @@
         </div>
         </form>
         
-        <a href="./users.php">Product's List</a>
-        <script src="./js/editLink.js"></script>        
+        <a href="./users.php">Product's List</a>      
 <?php
     include "./includes/footer.php";
 ?>

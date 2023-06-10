@@ -86,7 +86,7 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
 		<h1 class="text-center  pt-10 text-5xl" id="category">Category</h1>
 		<div class="grid grid-flow-col pt-20 pb-20 gap-x-7 justify-center card">
 			<figure class="relative h-3/4 max-w-xl transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0">
-				<a href="#">
+				<a href="./fps.php">
 					<?php echo'<img class="rounded-lg" src="uploads/0115374c6b4e0da289ab1f5a43282eb6.jpg" alt="image description">'; ?>
 				</a>
 				<figcaption class="relative px-4 text-lg text-white text-center bottom-10">
@@ -113,7 +113,7 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
 		<button id="to-top-button" onclick="goToTop()" title="Go To Top"
 		class="hidden fixed z-90 bottom-8 right-8 border-0 w-16 h-16 rounded-full drop-shadow-md bg-indigo-500 text-white text-3xl font-bold">&uarr;</button>
 	</section>
-
+1
 	<?php 
 	include "includes/footer.php";
 ?>
