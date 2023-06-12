@@ -78,5 +78,6 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
 <script type="text/javascript" src="./js/backtotop.js"></script>
+<script type="text/javascript" src="./js/slider.js"></script>
 </body>
 </html>
