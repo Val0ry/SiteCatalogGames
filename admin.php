@@ -84,10 +84,10 @@
 
         
 
-        <form method="post" action="./admin.php">
+        <form method="post" action="./admin.php" class="flex flex-col items-center">
             <h1 class="text-5xl py-10 text-center font-extrabold dark:text-white">Administrator</h1>
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-32">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 table-fixed">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" class="px-6 py-3">
@@ -142,12 +142,15 @@
                     </tbody>
                 </table>
             </div>
-        <div class="text-center w-32 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-            <a href="./upload.php" class="">Upload</a>
-        </div>
+
+            <div class="text-center w-48 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                <a href="./users.php">Product's List</a>   
+            </div>
+            
         </form>
+
         
-        <a href="./users.php">Product's List</a>      
+
 <?php
     include "./includes/footer.php";
 ?>

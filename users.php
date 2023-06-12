@@ -25,7 +25,6 @@
     }
 
 
-
     // if($_POST){
     //     // die(var_dump($_POST));
     //     if (isset($_POST['id']) && isset($_POST['username']) && isset($_POST['email'])){
@@ -117,10 +116,10 @@
 </section>
         
 
-        <form method="post">
+        <form method="post" action="./users.php" class="flex flex-col items-center">
             <h1 class="text-5xl py-10 text-center font-extrabold dark:text-white">Products</h1>
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-32">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 table-fixed">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" class="px-6 py-3">
@@ -152,42 +151,42 @@
                     <tbody>
                     <?php
                     //pour chaque résultat de la variable résult, on affiche le  stagiaire dans le tableau
-                    foreach($result as $lineTable){
+                    foreach($result as $lineUser){
                                     
                     ?>  
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <input type="hidden" name="id" value="<?= $lineTable['id'] ?>">
+                            <input type="hidden" name="id" value="<?= $lineUser['id'] ?>">
                             <td class="px-6 py-4 text-right" id="avatar">
-                            <input class="bg-transparent dark:bg-gray-800" type="text" value="<?= $lineTable['creator'] ?>">
+                            <input class="bg-transparent dark:bg-gray-800" type="text" value="<?= $lineUser['creator'] ?>">
                             </td>
 
                             <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <input class="bg-transparent dark:bg-gray-800" type="text" value="<?= $lineTable['names'] ?>">
+                            <input class="bg-transparent dark:bg-gray-800" type="text" value="<?= $lineUser['names'] ?>">
                             </td>
 
                             <td class="px-6 py-4">
-                            <input class="bg-transparent dark:bg-gray-800" type="text" value="<?= $lineTable['genres'] ?>">
+                            <input class="bg-transparent dark:bg-gray-800" type="text" value="<?= $lineUser['genres'] ?>">
                             </td>
 
                             <td class="px-6 py-4">
-                            <input class="bg-transparent dark:bg-gray-800" type="textarea" value="<?= $lineTable['descriptions'] ?>">
+                            <input class="bg-transparent dark:bg-gray-800" type="textarea" value="<?= $lineUser['descriptions'] ?>">
                             </td>
 
                             <td class="px-6 py-4">
-                            <input class="bg-transparent dark:bg-gray-800" type="number" value="<?= $lineTable['notes'] ?>">
+                            <input class="bg-transparent dark:bg-gray-800" type="number" value="<?= $lineUser['notes'] ?>">
                             </td>
 
                             <td class="px-6 py-4">
-                            <input class="bg-transparent dark:bg-gray-800" type="url" value="<?= $lineTable['links'] ?>">
+                            <input class="bg-transparent dark:bg-gray-800" type="url" value="<?= $lineUser['links'] ?>">
                             </td>
                             <td class="px-6 py-4">
-                            <input class="bg-transparent dark:bg-gray-800" type="url" value="<?= $lineTable['image1'] ?>">
+                            <input class="bg-transparent dark:bg-gray-800" type="url" value="<?= $lineUser['image1'] ?>">
                             </td>
 
                             
                             <td class="px-6 py-4 text-right">
                                 <?php
-                                if($lineTable['creator'] != 'SuperAdmin'){
+                                if($lineUser['creator'] != 'SuperAdmin'){
                                     include "./includes/if_user.php";}
                                 ?>
                             </td>
@@ -200,7 +199,7 @@
                 </table>
             </div>
         <div class="text-center w-32 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-            <a href="./upload.php" class="">Upload</a>
+            <a href="./addGame.php">Add</a>
         </div>
         </form>
 

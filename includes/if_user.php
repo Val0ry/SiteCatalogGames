@@ -4,5 +4,5 @@ if((($_SESSION["user"]["roles"]) != 'admin') && (($_SESSION["user"]["roles"]) !=
         exit(); 
     }
 ?>
-<input type="submit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" value="Edit">
+<a href="./edGame.php?id=<?= $lineUser['id'] ?>">Edit</a>
                                 
