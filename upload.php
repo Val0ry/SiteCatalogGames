@@ -50,7 +50,7 @@ include "./includes/header.php";
         chmod($newfilename, 0644);
         
     }
-  
+    // a faire pour les 2 pages add avatar et add image
    
 ?>
 <main>
