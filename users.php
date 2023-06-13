@@ -58,7 +58,7 @@
         <a href="index.php" class="nav-link">Home</a>
       </li>
       <li class="nav-item">
-        <a href="../html/destinations.html" class="nav-link">All Destinations</a>
+        <a href="../html/destinations.html" class="nav-link">Category</a>
       </li>
       <li class="nav-item">
         <a href="#section-5" class="nav-link">About</a>
@@ -87,9 +87,6 @@
               </li>
               <li>
                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
-              </li>
-              <li>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</a>
               </li>
               <li>
                 <a href="./logout.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>

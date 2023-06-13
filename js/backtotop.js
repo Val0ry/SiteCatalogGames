@@ -1,8 +1,8 @@
-        var toTopButton = document.getElementById("to-top-button");
+        let toTopButton = document.getElementById("to-top-button");
 
         // When the user scrolls down 200px from the top of the document, show the button
         window.onscroll = function () {
-            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
                 toTopButton.classList.remove("hidden");
             } else {
                 toTopButton.classList.add("hidden");
