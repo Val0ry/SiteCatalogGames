@@ -32,9 +32,10 @@ include "./includes/header.php";
         }
 
         // Génration d'un nom unique
-        $newname = md5(uniqid());
+        // $newname = md5(uniqid());
         // Génration du chemin complet
-        $newfilename = __DIR__ . "/uploads/$newname.$extension";
+        $newfilename = "uploads\\$filename";
+        $filename = pathinfo($newfilename, PATHINFO_FILENAME);
         
         // on déplace le fichier de tmp à uploads en le renommant
         if(!move_uploaded_file($_FILES["image"]["tmp_name"], $newfilename)){
@@ -43,11 +44,26 @@ include "./includes/header.php";
 
         //upload image to db
             require_once('connect.php');
-            $sql = $db->prepare('INSERT INTO products (image1) VALUES (?)');
-            $sql->execute([$newfilename]); 
+            $sql = ("UPDATE products SET image1 = :newfilename WHERE names = :filename");
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam(':newfilename', $newfilename);
+            $stmt->bindParam(':filename', $filename);
+            if($stmt->execute()) {
+                header('location: users.php');
+                echo 'fichier télécharger';
+            }else {
+                header('location: upload.php');
+                echo 'Erreur de chargement';
+            }
+
+
+
+
 
         // on interdit l'exectuion du fichier
         chmod($newfilename, 0644);
+
+        
         
     }
     // a faire pour les 2 pages add avatar et add image
@@ -86,8 +102,8 @@ include "./includes/header.php";
                         <label for="fichier">Image</label>
                         <input type="file" name="image" id="fichier">
                     </div>
-                    <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center" type="submit">
-                        <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
+                    <button class="text-center w-32 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" type="submit">
+                        <!-- <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg> -->
                         <span>Send</span>
                     </button>
                 </form>

@@ -23,28 +23,6 @@
       $query->execute();
       $result = $query->fetchAll(PDO::FETCH_ASSOC);
     }
-
-
-    // if($_POST){
-    //     // die(var_dump($_POST));
-    //     if (isset($_POST['id']) && isset($_POST['username']) && isset($_POST['email'])){
-             
-    //         $id = strip_tags($_POST['id']);
-    //         $username = strip_tags($_POST['username']);
-    //         $email = strip_tags($_POST['email']);
-    //         $sql = "UPDATE users SET username=:username, email=:email WHERE id = :id";
-    //         $query = $db->prepare($sql);
-    //         $query->bindValue(':id', $id, PDO::PARAM_INT);
-    //         $query->bindValue(':username', $username, PDO::PARAM_STR);
-    //         $query->bindValue(':email', $email, PDO::PARAM_STR);
-    //         $query->execute();
-    //         // require_once('./close.php');
-    //         // header('Location: ./admin.php');
-        
-    //     }else{
-    //         // die(var_dump($_POST['id']));
-    //     }
-    // }    
      
     include "./includes/header.php";
 ?>
@@ -198,6 +176,9 @@
         <div class="text-center w-32 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
             <a href="./addGame.php">Add</a>
         </div>
+        <div class="text-center w-32 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                        <a href="./upload.php" class="">Upload</a>
+                    </div>
         </form>
 
 <?php

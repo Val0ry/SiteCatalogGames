@@ -20,7 +20,7 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
 				<a href="login.php" class="nav-link">Account</a>
 			</li>
 			<li class="nav-item">
-				<a href="#category" class="nav-link">Category</a>
+				<a href="../html/destinations.html" class="nav-link">Category</a>
 			</li>
 			<li class="nav-item">
 				<a href="#section-5" class="nav-link">About</a>
@@ -47,37 +47,42 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
 		</div>
 	</section>
 	<section class="section-2-index">
-		<h1 class="text-center  pt-10 text-5xl" id="category">Category</h1>
+	 
+		<h1 class="text-center pt-10 text-5xl">Category</h1>
+		
+			
 		<div class="grid grid-flow-col pt-20 pb-20 gap-x-7 justify-center card">
-			<figure class="relative h-3/4 max-w-xl transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0">
-				<a href="#">
-					<img class="rounded-lg" src="img/fps.png" alt="image description">
-				</a>
-				<figcaption class="relative px-4 text-lg text-white text-center bottom-10">
-					<p>FPS</p>
-				</figcaption>
-			</figure>
-			<figure class="relative h-3/4 max-w-xl transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0">
-				<a href="#">
-					<img class="rounded-lg" src="img/fps.png" alt="image description">
-				</a>
-				<figcaption class="relative px-4 text-lg text-white text-center bottom-10">
-					<p>MMORPG</p>
-				</figcaption>
-			</figure>
-			<figure class="relative h-3/4 max-w-xl transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0">
-				<a href="#">
-					<img class="rounded-lg" src="img/fps.png" alt="image description">
-				</a>
-				<figcaption class="relative px-4 text-lg text-white text-center bottom-10">
-					<p>Strategy</p>
-				</figcaption>
-			</figure>
+			<?php
+			//pour chaque résultat de la variable résult, on affiche le  stagiaire dans le tableau
+			foreach($result as $category){
+			?> 
+				<div>
+					<input type="hidden" name="genres" value="<?= $category['id'] ?>">
+					<div>
+						<figure class="relative h-3/4 max-w-xl transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0">
+							<a href="category.php?genres=<?= $category['genres'] ?>" id="category">
+								<img class="rounded-lg" src="<?= $category['image'] ?>" alt="image description">
+							</a>
+							<figcaption class="relative px-4 text-lg text-white text-center bottom-10">
+								<p><?= $category['names'] ?></p>
+							</figcaption>
+						</figure>
+					</div>
+					
+				</div>
+			<?php
+			}
+			?>	
 		</div>
+		
+
 		<button id="to-top-button" onclick="goToTop()" title="Go To Top"
 		class="hidden fixed z-90 bottom-8 right-8 border-0 w-16 h-16 rounded-full drop-shadow-md bg-indigo-500 text-white text-3xl font-bold">&uarr;</button>
+
+	
+
 	</section>
-1
+
 	<?php 
 	include "includes/footer.php";
 ?>
