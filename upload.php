@@ -1,4 +1,8 @@
 <?php
+require_once('connect.php');
+session_start();
+include "./includes/header.php";
+
     // Vérification si un fichier a été envoyé
     if(isset($_FILES["image"]) && $_FILES["image"]["error"] === 0){
             // on a reçu l'image
@@ -39,28 +43,56 @@
 
         //upload image to db
             require_once('connect.php');
-            $sql = $db->prepare('INSERT INTO users (avatar) VALUES (?)');
+            $sql = $db->prepare('INSERT INTO products (image1) VALUES (?)');
             $sql->execute([$newfilename]); 
 
         // on interdit l'exectuion du fichier
         chmod($newfilename, 0644);
         
     }
-  
-  include "./includes/header.php";
+    // a faire pour les 2 pages add avatar et add image
+   
 ?>
+<main>
+            <section class="dark:bg-gray-900 section-1-index">
+                <nav class="navbar">
+                    <div class="logoz">
+                        <img src="img/logo.png" alt="Logo Z">
+                    </div>
+                    <ul class="nav-menu">
+                        <li class="nav-item">
+                            <a href="./index.php" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../html/destinations.html" class="nav-link">All Destinations</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#section-5" class="nav-link">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../html/index.html#section-7" class="nav-link">Contact</a>
+                        </li>
+                    </ul>
+                    <div class="hamburger">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                </nav>
 
-<form action="" method="post" enctype="multipart/form-data">
+                <form action="" method="post" enctype="multipart/form-data">
 
-    <div>
-        <label for="fichier">Image</label>
-        <input type="file" name="image" id="fichier">
-    </div>
-    <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center" type="submit">
-        <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
-        <span>Send</span>
-    </button>
-</form>
+                    <div>
+                        <label for="fichier">Image</label>
+                        <input type="file" name="image" id="fichier">
+                    </div>
+                    <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center" type="submit">
+                        <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
+                        <span>Send</span>
+                    </button>
+                </form>
+            </section>
+</main>
 
 <?php
 include "./includes/footer.php";
