@@ -2,22 +2,24 @@
 require_once('connect.php');
 session_start();
 
-$names = strip_tags($_GET['names']);
-$sql = "SELECT * FROM products WHERE names = :names";
+$id = strip_tags($_GET['id']);
+$sql = "SELECT * FROM products WHERE id = :id";
 $result = $db->prepare($sql);
 // Liaison de la valeur du paramètre ':id' à la variable $id
-$result->bindParam(':names', $names, PDO::PARAM_INT);
+$result->bindParam(':id', $id, PDO::PARAM_INT);
 $result->execute();
-$result->fetchAll(PDO::FETCH_ASSOC);
 // Vérification s'il y a des résultats
-
 $rowCount = $result->rowCount();
 if ($rowCount > 0) {
 	while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 		// Récupération de la valeur des colones
 		$descriptions = $row['descriptions'];
 		$names = $row['names'];
-		$image1 = $row['image1'];
+		$image = $row['image1'];
+		$image2 = $row['image2'];
+		$image3 = $row['image3'];
+		$image4 = $row['image4'];
+		$image5 = $row['image5'];
 	}
 } else {
 	echo "Aucun résultat trouvé.";
@@ -30,7 +32,7 @@ include "includes/header.php";
 <section class="section-1-call">
 	<nav class="navbar">
 		<div class="logoz">
-			<a href="index.php"><img src="img/logo.png" alt="Logo Z"></a>
+			<img src="img/logo.png" alt="Logo Z">
 		</div>
 		<ul class="nav-menu">
 			<li class="nav-item">
@@ -52,34 +54,31 @@ include "includes/header.php";
 			<span class="bar"></span>
 		</div>
 	</nav>
-
-	
-	<h1><?= $result['names'] ?></h1>
+	<?php echo '<h1 class="text-center text-4xl pt-20">' . $names . '</h1>'; ?>
 	<div class="flex justify-center">
-		<?= $result['descriptions'] ?>
+		<?php echo '<p class="pt-20 text-center w-3/5">' . $descriptions . '</p>'; ?>
 	</div>
-	
 </section>
 <section>
 	<div class="container mx-auto">
 		<div class="grid-cols-3 p-20 space-y-2 lg:space-y-0 lg:grid lg:gap-3 lg:grid-rows-3">
 			<div class="w-full">
-				<img class="rounded-lg" src="img/mw1.jpg" alt="image">
+				<img class="rounded-lg" src="<?= $image2 ?>" alt="image">
 			</div>
 			<div class="w-full col-span-2 row-span-2">
-				<a data-modal-target="defaultModal" data-modal-toggle="defaultModal"><img class="rounded-lg" src="img/mw2.jpg" alt="image"></a>
+				<a data-modal-target="defaultModal" data-modal-toggle="defaultModal"><img class="rounded-lg" src="<?= $image6 ?>" alt="image"></a>
 			</div>
 			<div class="w-full">
-				<img class="rounded-lg" src="img/mw3.jpg" alt="image">
+				<img class="rounded-lg" src="<?= $image3 ?>" alt="image">
 			</div>
 			<div class="w-full">
-				<img class="rounded-lg" src="img/mw4.jpg" alt="image">
+				<img class="rounded-lg" src="<?= $image4 ?>" alt="image">
 			</div>
 			<div class="w-full">
-				<img class="rounded-lg" src="img/mw5.jpg" alt="image">
+				<img class="rounded-lg" src="<?= $image5 ?>" alt="image">
 			</div>
 			<div class="w-full">
-				<img class="rounded-lg" src="img/mw6.jpg" alt="image">
+				<img class="rounded-lg" src="<?= $image ?>" alt="image">
 			</div>
 		</div>
 	</div>
@@ -90,24 +89,19 @@ include "includes/header.php";
 				<div class="relative h-56 overflow-hidden rounded-lg md:h-96">
 					<!-- Item 1 -->
 					<div class="hidden duration-700 ease-in-out" data-carousel-item>
-						<a href="callofduty.php"><img src="img/callofduty.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."></a>
+						<img src="<?= $image3 ?>" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
 					</div>
-					<!-- Item 2 -->
 					<div class="hidden duration-700 ease-in-out" data-carousel-item>
-						<img src="img/counter-strike.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+						<img src="<?= $image3 ?>" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
 					</div>
-					<!-- Item 3 -->
+
 					<div class="hidden duration-700 ease-in-out" data-carousel-item>
-						<img src="img/destiny.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+						<img src="<?= $image3 ?>" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
 					</div>
-					<!-- Item 4 -->
 					<div class="hidden duration-700 ease-in-out" data-carousel-item>
-						<img src="img/R6.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+						<img src="<?= $image3 ?>" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
 					</div>
-					<!-- Item 5 -->
-					<div class="hidden duration-700 ease-in-out" data-carousel-item>
-						<img src="img/doom.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-					</div>
+
 				</div>
 				<!-- Slider controls -->
 				<button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
@@ -125,8 +119,6 @@ include "includes/header.php";
 			</div>
 		</div>
 	</div>
-	<button id="to-top-button" onclick="goToTop()" title="Go To Top"
-	class="hidden fixed z-90 bottom-8 right-8 border-0 w-16 h-16 rounded-full drop-shadow-md bg-indigo-500 text-white text-3xl font-bold">&uarr;</button>
 </section>
 
 <?php 
