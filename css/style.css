@@ -149,6 +149,10 @@ form{
     width: 3em;
 }
 
+footer{
+    color: white
+}
+
 /* Class TOATS */
 #errorUsername{
     visibility: hidden;

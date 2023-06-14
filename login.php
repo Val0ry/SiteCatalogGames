@@ -56,7 +56,6 @@
     include "./includes/header.php";
 ?>
 
-        <main>
             <section class="dark:bg-gray-900 section-1-index">
                 <nav class="navbar">
                     <div class="logoz">
@@ -117,7 +116,6 @@
                     </div>
                 </div>
             </section>
-        </main>
 
         <script src="./js/tailwind.config.js"></script>
 <?php

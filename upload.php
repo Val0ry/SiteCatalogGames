@@ -1,6 +1,13 @@
 <?php
 require_once('connect.php');
 session_start();
+
+// Vérification des droits d'accès à la page Admin ou user
+if((($_SESSION["user"]["roles"]) != 'user') && (($_SESSION["user"]["roles"]) != 'admin')){
+    header("Location: login.php");
+    exit(); 
+  }
+
 include "./includes/header.php";
 
     $sql = "SELECT names FROM products";
