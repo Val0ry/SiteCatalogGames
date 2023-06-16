@@ -5,7 +5,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])){
     require_once('connect.php');
 
     $id = strip_tags($_GET['id']);
-    $sql = "SELECT * FROM intervention WHERE id = :id";
+    $sql = "SELECT * FROM users WHERE id = :id";
     $query = $db->prepare($sql);
     $query->bindValue(':id', $id, PDO::PARAM_INT);
     $query->execute();
@@ -14,7 +14,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])){
     if(!$result){
         header('Location: index.php');
     }
-    $sql = "DELETE FROM intervention WHERE id = :id";
+    $sql = "DELETE FROM users WHERE id = :id";
     $query = $db->prepare($sql);
     $query->bindValue(':id', $id, PDO::PARAM_INT);
     $query->execute();
@@ -23,10 +23,10 @@ if (isset($_GET['id']) && !empty($_GET['id'])){
         "is_del" => "Oui"
     ];
 
-    header('Location: list.php');
+    header('Location: ./admin.php');
 
 } else{
-    header('Location: index.php');
+    header('Location: ./edUsers.php');
 }
 
 ?>
