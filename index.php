@@ -38,20 +38,20 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
 	<div class="headtitle">
 		<h1 class="title">Step into our virtual universe and embark on the ultimate gaming experience !</h1>
 	</div>
-	<p class="default">just a line written for you</p>
+	<p class="text-white default">just a line written for you</p>
 	<div class="discover">
 		<button type="button" class="scale-150 text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Discover</button>
 	</div>
-	<div class="heroimg">
+	<div class="heroimg3">
 		<img src="./img/hero-position-img.png">
 	</div>
 </section>
 <section class="section-2-index">
 
-	<h1 class="text-center pt-10 text-5xl" id="categ">Category</h1>
+	<h1 class="text-white text-center pt-10 text-5xl" id="categ">Category</h1>
 
 
-	<div class="grid grid-flow-col pt-20 pb-20 gap-x-7 justify-center card">
+	<div class="grid grid-cols-3 pt-20 max-[1100px]:grid-cols-1 max-[1600px]:grid-cols-2 min-[2800px]:grid-cols-1 pl-10 pb-20 justify-items-center card">
 		<?php
 		//pour chaque résultat de la variable résult, on affiche le  stagiaire dans le tableau
 		foreach ($result as $category) {
