@@ -36,13 +36,13 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
 		</div>
 	</nav>
 	<div class="headtitle">
-		<h1 class="title">Step into our virtual universe and embark on the ultimate gaming experience !</h1>
+		<h1 class="font-['Dancing Script'] title">Step into our virtual universe and embark on the ultimate gaming experience !</h1>
 	</div>
 	<p class="text-white default">just a line written for you</p>
 	<div class="discover">
 		<button type="button" class="scale-150 text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Discover</button>
 	</div>
-	<div class="heroimg3">
+	<div class="heroimg">
 		<img src="./img/hero-position-img.png">
 	</div>
 </section>

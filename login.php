@@ -91,7 +91,7 @@ include "./includes/header.php";
                       <input class="p-3 border-[1px] bg-gray-900 text-gray-400 border-slate-500 rounded-sm w-80 focus:outline-none focus:border-[#B317E1] focus:ring-2 focus:ring-[#B317E1]" type="text" name="username" id="email" placeholder="E-Mail or Phone number" required>
                       <div class="flex flex-col space-y-1">
                           <input class="p-3 border-[1px] bg-gray-900 text-gray-400 border-slate-500 rounded-sm w-80 focus:outline-none focus:border-[#B317E1] focus:ring-2 focus:ring-[#B317E1]" type="password" name="pass" id="password" placeholder="••••••••" required>
-                          <p class="font-bold text-[#B317E1]">Forgot password?</p>
+                          <p class="font-bold pt-3 pb-3 text-[#B317E1]">Forgot password?</p>
                       </div>
                       <div class="flex flex-col space-y-5 w-full">
                           <button type="submit" class="w-full bg-[#B317E1] rounded-3xl p-3 text-white font-bold transition duration-200 hover:text-[#c4c4c4] hover:bg-[#8e12b3]">Log in</button>
@@ -101,11 +101,6 @@ include "./includes/header.php";
                         </div>
                        <a href="./inscription.php"><button type="button" class="w-full border-[#B317E1] hover:text-[#8e12b3] hover:border-[#8e12b3] border-[1px] rounded-3xl p-3 text-[#B317E1] font-bold transition duration-200">Sign Up</button></a>
                     </div>
-                    <div class="flex space-x-1 p-20 text-sm">
-                      <p class="hover:underline text-white cursor-pointer">French</p>
-                      <div class="border-r-[1px] border-r-slate-300"></div>
-                      <p class="font-bold hover:underline text-white cursor-pointer">English</p>
-                  </div>
               </div>
       </div>
   </div>

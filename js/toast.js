@@ -1,9 +1,23 @@
-let x = document.getElementById("errorUsername");
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
+const navLink = document.querySelectorAll(".nav-link");
 
-// Ajouter la classe "show" à l'élément DIV
-x.className = "show";
+hamburger.addEventListener("click", mobileMenu);
+navLink.forEach(n => n.addEventListener("click", closeMenu));
 
-// Après 3 secondes, retirer la classe "show" de l'élément DIV
-setTimeout(function () {
-  x.className = x.className.replace("show", "");
-}, 3000);
+function mobileMenu() {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+}
+
+function closeMenu() {
+    hamburger.classList.remove("active");
+    navMenu.classList.remove("active");
+}
+
+let form = document.querySelecter('form');
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  return false;
+});
